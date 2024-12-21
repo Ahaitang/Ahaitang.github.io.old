@@ -96,15 +96,21 @@ code {
     [dir="rtl"] & {
       direction: ltr;
     }
-  
-    pre {
+    // 代码滚动样式
+    pre {  // line 345
       margin: initial;
       padding: 0;
       margin: 0;
-      width: 100%;
-      white-space: pre; /* 保持空格和换行 */
+      width: auto;
       max-height: 20em; /* 固定代码块的最大高度 */
+      // 是否显示滚动条
+      scrollbar-width: none; /* Firefox */
+      white-space: pre; /* 保持空格和换行 */
       overflow: auto; /* 超出部分显示垂直滚动条 */
+      // 该代码块用于自定义滚动条样式
+      &::-webkit-scrollbar {
+        display: none; /* Chrome Safari */
+      }
     }
     .ln {
       user-select: none;

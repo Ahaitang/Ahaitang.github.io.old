@@ -3,15 +3,12 @@ title: 友情链接
 links:
   - title: GitHub
     description: GitHub is the world's largest software development platform.
-    website: https://github.com
+    website: https://github.com/Ahaitang
     image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-  - title: TypeScript
-    description: TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
-    website: https://www.typescriptlang.org
-    image: ts-logo-128.jpg
-  - title: Tabler Icons
-    description: This theme comes with some SVG icons from Tabler Icons.
-    website: https://tabler.io
+  - title: Bilibili
+    description: Bilibili is a Chinese video website.
+    website: https://space.bilibili.com/437520071?spm_id_from=333.1007.0.0
+    image: https://www.bilibili.com/favicon.ico
 menu:
     main: 
         weight: -50

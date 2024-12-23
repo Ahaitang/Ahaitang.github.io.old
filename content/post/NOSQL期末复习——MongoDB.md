@@ -3,7 +3,7 @@ title = 'NOSQL期末复习——MongoDB'
 date = 2024-12-22T01:06:20+08:00
 weight=5
 categories = ['AHUCM', 'NOSQL', '期末复习', 'MongoDB']
-images = 'post/avatar.png'
+images = '/static/NOSQLRECOVER/avatar.png'
 +++
 # MongoDB
 ## mongoDB简介
@@ -44,24 +44,24 @@ MongoDB是一个基于分布式文件存储的数据库。它是一个开源的�
 ## mongoDB的安装步骤(包含mongosh)
 **下载 mongoBD 与 mongosh**  
 mongoBD: https://www.mongodb.com/try/download/community
-![](post/NOSQL复习-1.png)  
+![](/static/NOSQLRECOVER/NOSQL复习-1.png)  
 mongosh: https://www.mongodb.com/try/download/shell
-![](post/NOSQL复习-2.png)
+![](/static/NOSQLRECOVER/NOSQL复习-2.png)
 
  
  
 **安装mongoDB**
 1. 将monogoDB解压后安装，将其安装到一个不包含中文路径的地方,并将 mongosh 解压至 monogodb文件夹内部  
- ![](post/NOSQL复习-3.png)
+ ![](/static/NOSQLRECOVER/NOSQL复习-3.png)
 2. 配置mongodb 与 monogosh的环境变量  
- ![](post/NOSQL复习-4.png)![](post/NOSQL复习-6.png)
+ ![](/static/NOSQLRECOVER/NOSQL复习-4.png)![](/static/NOSQLRECOVER/NOSQL复习-6.png)
 3. 在mongodb下创建Data文件夹与 Log 文件夹，并在 Log 文件夹下创建 mongo.log 文件  
- ![](post/NOSQL复习-7.png)![](post/NOSQL复习-8.png)
+ ![](/static/NOSQLRECOVER/NOSQL复习-7.png)![](/static/NOSQLRECOVER/NOSQL复习-8.png)
  
 4. 下载 MongoDB 服务，并启动  
- ![](post/NOSQL复习-9.png)![](post/NOSQL复习-10.png)
+ ![](/static/NOSQLRECOVER/NOSQL复习-9.png)![](/static/NOSQLRECOVER/NOSQL复习-10.png)
 5. 在终端验证环境是否配置成功  
- ![](post/NOSQL复习-11.png)
+ ![](/static/NOSQLRECOVER/NOSQL复习-11.png)
 ## MongoDB 有关操作
 ### SHELL 终端命令
 **//1.进入my_test数据库**

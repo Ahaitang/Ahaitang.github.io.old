@@ -42,24 +42,24 @@ MongoDB是一个基于分布式文件存储的数据库。它是一个开源的�
 10. 高性能分析：MongoDB可以用于高性能分析，如日志分析、数据分析等。  
 
 ## mongoDB的安装步骤(包含mongosh)
-**下载 mongoBD 与 mongosh**
-mongoBD: https://www.mongodb.com/try/download/community
-1. ![](https://cdn.jsdelivr.net/gh/Ahaitang/PicGo@master/Images/NOSQL%E5%A4%8D%E4%B9%A0-1.png)
-mongosh: https://www.mongodb.com/try/download/shell
+**下载 mongoBD 与 mongosh**  
+mongoBD: https://www.mongodb.com/try/download/community  
+![](https://cdn.jsdelivr.net/gh/Ahaitang/PicGo@master/Images/NOSQL%E5%A4%8D%E4%B9%A0-1.png)   
+mongosh: https://www.mongodb.com/try/download/shell  
 ![](https://cdn.jsdelivr.net/gh/Ahaitang/PicGo@master/Images/NOSQL%E5%A4%8D%E4%B9%A0-2.png)
 
 
 **安装mongoDB**
-1. 将monogoDB解压后安装，将其安装到一个不包含中文路径的地方,并将 mongosh 解压至 monogodb文件夹内部
- ![](https://cdn.jsdelivr.net/gh/Ahaitang/PicGo@master/Images/NOSQL%E5%A4%8D%E4%B9%A0-3.png)
-2. 配置mongodb 与 monogosh的环境变量
+1. 将monogoDB解压后安装，将其安装到一个不包含中文路径的地方,并将 mongosh 解压至 monogodb文件夹内部  
+ ![](https://cdn.jsdelivr.net/gh/Ahaitang/PicGo@master/Images/NOSQL%E5%A4%8D%E4%B9%A0-3.png)  
+2. 配置mongodb 与 monogosh的环境变量  
 ![](https://cdn.jsdelivr.net/gh/Ahaitang/PicGo@master/Images/NOSQL%E5%A4%8D%E4%B9%A0-4.png)*![](https://cdn.jsdelivr.net/gh/Ahaitang/PicGo@master/Images/NOSQL%E5%A4%8D%E4%B9%A0-6.png)*
-3. 在mongodb下创建Data文件夹与 Log 文件夹，并在 Log 文件夹下创建 mongo.log 文件
+3. 在mongodb下创建Data文件夹与 Log 文件夹，并在 Log 文件夹下创建 mongo.log 文件  
 ![](https://cdn.jsdelivr.net/gh/Ahaitang/PicGo@master/Images/NOSQL%E5%A4%8D%E4%B9%A0-7.png)![](https://cdn.jsdelivr.net/gh/Ahaitang/PicGo@master/Images/NOSQL%E5%A4%8D%E4%B9%A0-8.png)
  
-4. 下载 MongoDB 服务，并启动
+4. 下载 MongoDB 服务，并启动  
  ![](https://cdn.jsdelivr.net/gh/Ahaitang/PicGo@master/Images/NOSQL%E5%A4%8D%E4%B9%A0-9.png)![](https://cdn.jsdelivr.net/gh/Ahaitang/PicGo@master/Images/NOSQL%E5%A4%8D%E4%B9%A0-10.png)
-5. 在终端验证环境是否配置成功
+5. 在终端验证环境是否配置成功  
  ![](https://cdn.jsdelivr.net/gh/Ahaitang/PicGo@master/Images/NOSQL%E5%A4%8D%E4%B9%A0-11.png)
 ## MongoDB 有关操作
 ### SHELL 终端命令

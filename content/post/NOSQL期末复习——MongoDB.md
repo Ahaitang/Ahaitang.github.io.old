@@ -526,19 +526,6 @@ mc.close();
    - 断开与MongoDB服务器的连接
 
 ```java
-package com.MongoDB.pojo;
-
-import com.mongodb.MongoClient;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
-import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.result.DeleteResult;
-import com.mongodb.client.result.UpdateResult;
-import org.bson.Document;
-import org.bson.conversions.Bson;
-
 import java.util.ArrayList;
 
 public class MongoDBWork {

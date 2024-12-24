@@ -602,6 +602,328 @@ OK
 3) "three"
 4) "3"
 ``` 
+
+### Jedis 
+#### 引入 JAR 包
+```xml
+<dependency>  
+	<groupId>redis.clients</groupId>  
+	<artifactId>jedis</artifactId>  
+	<version>5.1.0</version>  
+</dependency>  
+  
+<dependency>  
+	<groupId>com.alibaba</groupId>  
+	<artifactId>fastjson</artifactId>  
+	<version>1.2.62</version>  
+</dependency>
+```
+
+#### 连接数据库
+```JAVA
+// 创建Jedis对象  
+Jedis jedis = new Jedis("localhost", 6379);
+```
+#### 对数据类型进行操作
+```JAVA
+/*  
+todo: String  
+*/  
+public void redisStr(Jedis jedis) {  
+// 字符串操作  
+jedis.set("name", "admin");  
+System.out.println("取值：" + jedis.get("name"));  
+System.out.println("----------");  
+  
+// 取旧值 赋新值  
+String oldName = jedis.getSet("name", "zhangSan");  
+System.out.println("旧值:" + oldName);  
+System.out.println("新值:" + jedis.get("name"));  
+System.out.println("----------------------");  
+  
+// 一次为多个字符串设置值  
+jedis.mset("k1", "v1", "k2", "v2", "k3", "v3");  
+List<String> list = jedis.mget("k1", "k2", "k3");  
+System.out.println("取值：");  
+for (String str : list) {  
+System.out.print(str + " ");  
+}  
+System.out.println("----------------------");  
+  
+// 判断指定的字符串 类型的key存不存在  
+Boolean flag = jedis.exists("name1234");  
+System.out.println("判断key是否存在：" + flag);  
+System.out.println("----------");  
+  
+// 进行数值类型的递增操作  
+jedis.set("num", "9");  
+System.out.println("递增后的值：" + jedis.incr("num"));  
+System.out.println("----------");  
+  
+// 获取字符串长度  
+System.out.println("字符串长度：" + jedis.strlen("name"));  
+System.out.println("----------");  
+  
+// 从指定位置替换字符串  
+jedis.setrange("name", 5, "san");  
+System.out.println("替换后的值：" + jedis.get("name"));  
+System.out.println("----------");  
+  
+// 追加字符串  
+jedis.append("name", "lisi");  
+System.out.println("追加后的值：" + jedis.get("name"));  
+System.out.println("----------");  
+  
+// 批量删除  
+jedis.del("k1", "k2", "k3");  
+System.out.println("----------");  
+  
+}  
+  
+  
+/*  
+todo: Hash  
+*/  
+//hash的操作  
+public void redisHash(Jedis jedis) {  
+// 赋值  
+jedis.hset("h1", "k1", "123");  
+String k1 = jedis.hget("h1", "k1");  
+System.out.println("取值：" + k1);  
+System.out.println("------------------");  
+  
+// Hmset() 批量赋值  
+Map<String, String> map = new HashMap<String, String>();  
+map.put("k2", "123");  
+map.put("k3", "124");  
+jedis.hmset("h1", map);  
+  
+// Hmget() 批量取值  
+List<String> list = jedis.hmget("h1", "k1", "k2", "k3");  
+System.out.println("批量取值：");  
+for (String str : list) {  
+System.out.print(str + " ");  
+}  
+System.out.println("------------------");  
+  
+// Hgetall() 取出所有键值对  
+Map<String, String> map1 = jedis.hgetAll("h1");  
+System.out.println("取全部键值：");  
+for (String key : map1.keySet()) {  
+System.out.println(key + ":" + map1.get(key));  
+}  
+System.out.println("----------");  
+  
+// Hexists() 判断指定的key是否存在  
+boolean flag = jedis.hexists("h1", "k4");  
+System.out.println("判断key是否存在：" + flag);  
+System.out.println("----------");  
+  
+// HincrBy() 数值类型的递增操作  
+Long l = jedis.hincrBy("h1", "k4", -2);  
+System.out.println("递增后的值：" + l);  
+System.out.println("----------");  
+  
+// Hlen() 获取hash表的长度  
+System.out.println("hash表长度：" + jedis.hlen("h1"));  
+System.out.println("----------");  
+  
+// Hdel() 删除指定的key  
+jedis.hdel("h1", "k4");  
+  
+}  
+  
+/*  
+todo: List  
+*/  
+//List的操作  
+public void redisList(Jedis jedis) {  
+// 删除全部元素  
+jedis.del("l1");  
+System.out.println("----------");  
+// 赋值  
+Long len;  
+len = jedis.lpush("l1", "王五");  
+System.out.println("左添加：" + len);  
+len = jedis.rpush("l1", "张三");  
+System.out.println("右添加：" + len);  
+System.out.println("----------");  
+  
+// 弹出列表元素  
+String str = jedis.lpop("l1");  
+System.out.println("左弹出：" + str);  
+str = jedis.rpop("l1");  
+System.out.println("右弹出：" + str);  
+str = jedis.rpop("l2");  
+System.out.println("空值弹出：" + str);  
+System.out.println("----------");  
+  
+// 列表长度  
+jedis.rpush("l1", "李四");  
+jedis.lpush("l1", "张三");  
+jedis.rpush("l1", "王二");  
+System.out.println("列表长度：" + jedis.llen("l1"));  
+System.out.println("----------");  
+  
+// 列表元素是否存在  
+long flag = jedis.lrem("l1", 1, "张三");  
+System.out.println(flag);  
+System.out.println("----------");  
+  
+// Lindex() 获取指定索引的元素  
+str = jedis.lindex("l1", 0);  
+System.out.println("索引为0的元素：" + str);  
+System.out.println("----------");  
+  
+// larnge() 获取指定范围的元素  
+List<String> list = jedis.lrange("l1", 0, -1);  
+System.out.println("列表元素0 ~ -1：");  
+for (String s : list) {  
+System.out.print(s + " ");  
+}  
+}  
+  
+/*  
+todo: Set  
+*/  
+public void redisSet(Jedis jedis) {  
+// 赋值  
+jedis.sadd("s1", "a", "b", "c", "d", "e");  
+System.out.println("添加元素：" + jedis.smembers("s1"));  
+System.out.println("----------");  
+  
+// 移除元素  
+long lon;  
+lon = jedis.srem("s1", "g");  
+System.out.println("移除个数元素：" + lon);  
+System.out.println("----------");  
+  
+// SMove() 移动元素  
+jedis.sadd("s2", "e", "f");  
+jedis.smove("s1", "s2", "d");  
+System.out.println("移动元素：" + jedis.smembers("s1") +  
+" " + jedis.smembers("s2"));  
+System.out.println("----------");  
+  
+// 元素个数  
+System.out.println("元素个数：" + jedis.scard("s1"));  
+// 全部元素  
+System.out.println("全部元素：" + jedis.smembers("s1"));  
+System.out.println("----------");  
+  
+// 判断元素是否存在  
+boolean flag = jedis.sismember("s1", "a");  
+System.out.println("元素是否存在：" + flag);  
+System.out.println("----------");  
+  
+// 取交集  
+jedis.sadd("s2", "a");  
+Set<String> set1 = jedis.sinter("s1", "s2");  
+System.out.println("取交集：" + set1);  
+System.out.println("----------");  
+  
+// 取并集  
+Set<String> set2 = jedis.sunion("s1", "s2");  
+System.out.println("取并集：" + set2);  
+System.out.println("----------");  
+// 取差集  
+Set<String> set3 = jedis.sdiff("s1", "s2");  
+System.out.println("取差集：" + set3);  
+System.out.println("----------");  
+  
+}  
+  
+  
+/*  
+todo: Sorted Set  
+*/  
+//Sorted Set的操作  
+public void redisSortedSet(Jedis jedis) {  
+// 赋值  
+jedis.zadd("z1", 10, "a");  
+// 批量赋值  
+Map<String, Double> map = new HashMap<String, Double>();  
+map.put("b", 20.0);  
+map.put("c", 30.0);  
+long lon;  
+lon = jedis.zadd("z1", map);  
+System.out.println("添加元素个数：" + lon);  
+System.out.println("----------");  
+  
+// 移除元素  
+lon = jedis.zrem("z1", "g");  
+System.out.println("移除个数元素：" + lon);  
+System.out.println("----------");  
+  
+// 元素个数  
+System.out.println("元素个数：" + jedis.zcard("z1"));  
+  
+// 全部元素  
+System.out.println("全部元素：" + jedis.zrange("z1", 0, -1));  
+System.out.println("----------");  
+  
+// 取指定分数范围的元素数量  
+lon = jedis.zcount("z1", 20, 40);  
+System.out.println("分数范围元素个数：" + lon);  
+System.out.println("----------");  
+  
+// 按分数排序(从小到大)  
+List<String> z1 = jedis.zrangeByScore("z1", 0, 100);  
+System.out.println("按分数排序(从小到大)：" + z1);  
+System.out.println("----------");  
+  
+// 按分数排序(从大到小)  
+List<String> z2 = jedis.zrevrangeByScore("z1", 100, 0);  
+System.out.println("按分数排序(从大到小)：" + z2);  
+System.out.println("----------");  
+  
+// 按元素排序并显示成绩  
+List<Tuple> z3 = jedis.zrangeByScoreWithScores("z1", 0, 100);  
+for (Tuple tuple : z3) {  
+System.out.println(tuple.getElement() + ":" + tuple.getScore());  
+}  
+System.out.println("----------");  
+}  
+  
+/*  
+todo: pub/sub  
+*/  
+//发布订阅的操作  
+public void redisPubSub(Jedis jedis) {  
+// 创建订阅者  
+JedisPubSub subscriber = new JedisPubSub() {  
+@Override  
+public void onMessage(String channel, String message) {  
+// 处理订阅到的消息  
+System.out.println("Received message: " + message + " from channel: " + channel);  
+}  
+};  
+  
+// 订阅频道  
+jedis.subscribe(subscriber, "news");  
+System.out.println("----------");  
+// 在另一个线程中发布消息  
+new Thread(() -> {  
+try {  
+Thread.sleep(1000);  
+jedis.publish("news", "Hello, World!");  
+} catch (InterruptedException e) {  
+e.printStackTrace();  
+}  
+}).start();  
+  
+// 等待接收消息  
+try {  
+Thread.sleep(2000);  
+} catch (InterruptedException e) {  
+e.printStackTrace();  
+}  
+  
+// 取消订阅  
+subscriber.unsubscribe();  
+}
+```
+
 ## 题目
 ### 一、选择题
 1. 关于Redis的RDB持久化策略，说法错误的是 C

@@ -7,7 +7,7 @@ links:
     image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
   - title: Bilibili
     description: Bilibili is a Chinese video website.
-    website: https://space.bilibili.com/437520071?spm_id_from=333.1007.0.0
+    website: https://space.bilibili.com/437520071
     image: https://www.bilibili.com/favicon.ico
 menu:
     main: 

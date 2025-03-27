@@ -104,7 +104,7 @@ code {
       width: auto;
       max-height: 20em; /* 固定代码块的最大高度 */
       // 是否显示滚动条
-      scrollbar-width: none; /* Firefox */
+      scrollbar-width: thin; /* Firefox */
       white-space: pre; /* 保持空格和换行 */
       overflow: auto; /* 超出部分显示垂直滚动条 */
       // 该代码块用于自定义滚动条样式
@@ -313,23 +313,23 @@ html {
 //--------------------------------------------------
 //归档页面双栏
 /* 归档页面两栏 */
-@media (min-width: 1024px) {
-  .article-list--compact {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    background: none;
-    box-shadow: none;
-    gap: 1rem;
+// @media (min-width: 1024px) {
+//   .article-list--compact {
+//     display: grid;
+//     grid-template-columns: 1fr 1fr;
+//     background: none;
+//     box-shadow: none;
+//     gap: 1rem;
 
-    article {
-      background: var(--card-background);
-      border: none;
-      box-shadow: var(--shadow-l2);
-      margin-bottom: 8px;
-      border-radius: 16px;
-    }
-  }
-}
+//     article {
+//       background: var(--card-background);
+//       border: none;
+//       box-shadow: var(--shadow-l2);
+//       margin-bottom: 8px;
+//       border-radius: 16px;
+//     }
+//   }
+// }
 
 
 //---------------------------------------------------------
